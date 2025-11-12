@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 130px;
+}
+
+/* Общая фиксированная шапка */
+.header {
+    background: rgb(255, 255, 255);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* Верхняя строка - контакты */
+.header-top {
+    background: #c7c7c7;
+    padding: 8px 0;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.header-top-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+}
+
+.contacts { 
+    float: right ;
+    position: relative;
+    display: flex;
+    gap: 20px;
+}
+
+/* Средняя строка - лого и иконки */
+.header-middle {
+    background-color: #f5f5f5;
+    padding: 12px 0;
+    border-bottom: 1px solid #ffffff;
+}
+
+.header-middle-content {
+    background-color: #f5f5f5;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    
+}
+.build {
+  width: 26px;
+  height: 26px;;
+  left: 0px;
+  top: 6px;
+  overflow: visible;
+  position: relative;
+  overflow: visible;
+  aspect-ratio: 1;
+}
+
+
+.header-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Стили для иконки корзины */
+.cart-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.cart-icon:hover {
+    background: #dcdcdc;
+}
+
+.cart-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Стили для иконки пользователя */
+.person-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.person-icon:hover {
+    background: #dcdcdc;
+}
+
+.person-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.user-info {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.logout-btn {
+    background: #ffffff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Нижняя строка - навигация */
+.header-bottom {
+    padding: 10px 0;
+    background: rgb(208, 208, 208);
+    position: absolute;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+    max-width: 1200px;
+    margin-left: 3%;
+    display: flex;
+    float: left;
+    justify-content: center;
+    gap: 50px;
+    padding: 0 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #9f1d1d;
+    color: rgb(255, 255, 255);
+}
+
+.nav-links a.active {
+    background-color: #961616;
+    color: rgb(255, 255, 255);
+}
+
+/* Главный баннер с фоном */
+.hero {
+    background-image: url(/static/images/основа.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 150px 20px;
+    position: relative;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Основной контент */
+.content {
+    flex: 1;
+    padding: 60px 20px;
+}
+.section {
+    margin: 0 auto 50px;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #dc5d5d;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.product-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.product-card h3 {
+    margin-bottom: 15px;
+    color: #000000;
+}
+
+.about {
+    background: white;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin: 0 20px;
+}
+
+.about p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* Футер */
+.footer {
+    background: #333232;
+    color: white;
+    padding: 40px 20px;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-contacts{
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    color: #D72F2F;
+    font-size: 18px;
+}
+
+.footer-section p, .footer-section a {
+    color: #bfbfbf;
+    margin-bottom: 8px;
+    text-decoration: none;
+    display: block;
+    line-height: 1.5;
+}
+
+
+
+

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автозапчасти</title>
+    <link rel="stylesheet" href="../static/styles/catalog.css">
+</head>
+<body>
+    <!-- Общая фиксированная шапка -->
+    <header class="header">
+        <!-- Верхняя строка - контакты -->
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="contacts">
+                    <img class="header-icons" src="../static/icons/call.svg"/>
+                    <span>+7 (850) 589-48-43</span>
+                </div>
+                
+                <div class="user-auth">
+                    {% if user_logged_in %}
+                        <span style="color: white;">Привет, {{ user_name }}!</span>
+                    {% else %}
+                        <a href="/login" style="color: rgb(0, 0, 0); text-decoration: none;"></a>
+                    {% endif %}
+                </div>
+                <div class="contacts" style="float: left;">
+                    <img class="header-icons" src="../static/icons/location_on.svg"/>
+                    <span>info@auto-delta.com</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Средняя строка - лого и иконки -->
+        <div class="header-middle">
+            <div class="header-middle-content">
+                <div class="logo"><img class="build" src="../static/icons/build.svg" alt="">АвтоДельта</div>
+                <div class="header-icons">
+                    <a href="/cart" class="cart-icon">
+                        <img src="../static/icons/shopping_cart.png" alt="Корзина">
+                    </a>
+                    {% if user_logged_in %}
+                        <a href="/profile" class="person-icon">
+                            <img src="../static/icons/person.png" alt="Профиль">
+                        </a>
+                        <a href="/logout" class="logout-btn">Выйти</a>
+                    {% else %}
+                        <a href="/login" class="person-icon">
+                            <img src="../static/icons/person.png" alt="Войти">
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Нижняя строка - навигация -->
+        <nav class="header-bottom">
+            <div class="nav-links">
+                <a href="/index" >Главная</a>
+                <a href="/" class="active">Каталог</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="catalog-container">
+            <!-- Боковая панель с фильтрами -->
+            <aside class="filters-sidebar">
+                <div class="filters-section">
+                    <h2 class="filters-title">Каталог</h2>
+                    
+                    <div class="filter-group">
+                        <div class="filter-group-title">Категория товаров</div>
+                        <ul class="filter-list">
+                            <li class="filter-item">Все товары</li>
+                            <li class="filter-item">Фильтры</li>
+                            <li class="filter-item">Амортизаторы</li>
+                            <li class="filter-item">Тормозная система</li>
+                            <li class="filter-item">Двигатель</li>
+                            <li class="filter-item">Рулевое управление</li>
+                            <li class="filter-item">Подвеска</li>
+                            <li class="filter-item">Шины</li>
+                            <li class="filter-item">Диски</li>
+                            <li class="filter-item">Моторные масла</li>
+                            <li class="filter-item">Аксессуары</li>
+                            <li class="filter-item">Автохимия</li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Основной контент -->
+            <main class="main-content">
+                <!-- Баннер -->
+                <section class="hero-section">
+                    <h1 class="hero-title">Создано для скорости. Цена рассчитана на вас.</h1>
+                    <p class="hero-subtitle">
+                        Покупайте тысячи запчастей и аксессуаров для вашего автомобиля со спокойной душой 
+                        у единственного надежного поставщика.
+                    </p>
+                </section>
+
+                <!-- Сетка товаров -->
+                <div class="products-grid">
+                    <!-- Товар 1 - В наличии -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://avatars.mds.yandex.net/get-mpic/11179429/2a0000018c871d41c4f5d94008fd2e89ea9f/orig" alt="Воздушный фильтр">
+                        </div>
+                        <div class="stock-status in-stock">В наличии</div>
+                        <div class="product-name">Воздушный фильтр двигателя</div>
+                        <div class="product-prices">
+                            <span class="current-price">1 346 ₽</span>
+                            <span class="old-price">2 346 ₽</span>
+                        </div>
+                        <button class="add-to-cart">В корзину</button>
+                    </div>
+
+                    <!-- Товар 2 - В наличии -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://maks-plus.ru/uploads/spareparts/2/24981/thumb_300_300.jpg" alt="Масляный фильтр">
+                        </div>
+                        <div class="stock-status in-stock">В наличии</div>
+                        <div class="product-name">Масляный фильтр</div>
+                        <div class="product-prices">
+                            <span class="current-price">856 ₽</span>
+                            <span class="old-price">1 200 ₽</span>
+                        </div>
+                        <button class="add-to-cart">В корзину</button>
+                    </div>
+
+                    <!-- Товар 3 - Нет в наличии -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://avatars.mds.yandex.net/get-mpic/12636049/2a0000018d8fd2a907d390fe2c7f157fecb2/orig" alt="Тормозные колодки">
+                        </div>
+                        <div class="stock-status out-of-stock">Нет в наличии</div>
+                        <div class="product-name">Тормозные колодки</div>
+                        <div class="product-prices">
+                            <span class="current-price">2 890 ₽</span>
+                            <span class="old-price">3 500 ₽</span>
+                        </div>
+                        <button class="add-to-cart" disabled>Нет в наличии</button>
+                    </div>
+
+                    <!-- Товар 4 - В наличии -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://avatars.mds.yandex.net/get-mpic/16477657/2a000001988919a9b4a94bd3a7c22f1f14f3/orig" alt="Амортизатор">
+                        </div>
+                        <div class="stock-status in-stock">В наличии</div>
+                        <div class="product-name">Амортизатор передний</div>
+                        <div class="product-prices">
+                            <span class="current-price">4 230 ₽</span>
+                            <span class="old-price">5 200 ₽</span>
+                        </div>
+                        <button class="add-to-cart">В корзину</button>
+                    </div>
+
+                    <!-- Товар 5 - Нет в наличии -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://xn--161-5cdzszlzil8e.xn--p1ai/files/tyres/images/1704463239.jpg" alt="Шины летние">
+                        </div>
+                        <div class="stock-status out-of-stock">Нет в наличии</div>
+                        <div class="product-name">Шины летние</div>
+                        <div class="product-prices">
+                            <span class="current-price">3 740 ₽</span>
+                            <span class="old-price">5 500 ₽</span>
+                        </div>
+                        <button class="add-to-cart" disabled>Нет в наличии</button>
+                    </div>
+
+                    <!-- Товар 6 - В наличии -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://cdn1.ozone.ru/s3/multimedia-b/6674786831.jpg" alt="Моторное масло">
+                        </div>
+                        <div class="stock-status in-stock">В наличии</div>
+                        <div class="product-name">Моторное масло 5W-30</div>
+                        <div class="product-prices">
+                            <span class="current-price">1 890 ₽</span>
+                            <span class="old-price">2 200 ₽</span>
+                        </div>
+                        <button class="add-to-cart">В корзину</button>
+                    </div>
+
+                    <!-- Товар 7 - В наличии -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://avatars.mds.yandex.net/get-mpic/11385384/2a0000018c3969f4f88fdced241df29a8bb6/9hq" alt="Тормозной диск">
+                        </div>
+                        <div class="stock-status in-stock">В наличии</div>
+                        <div class="product-name">Тормозной диск</div>
+                        <div class="product-prices">
+                            <span class="current-price">3 450 ₽</span>
+                            <span class="old-price">4 100 ₽</span>
+                        </div>
+                        <button class="add-to-cart">В корзину</button>
+                    </div>
+
+                    <!-- Товар 8 - Нет в наличии -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://img.joomcdn.net/76ef865f3bab19d17beecb16fa43232650ea9394_original.jpeg" alt="Ремень ГРМ">
+                        </div>
+                        <div class="stock-status out-of-stock">Нет в наличии</div>
+                        <div class="product-name">Ремень ГРМ</div>
+                        <div class="product-prices">
+                            <span class="current-price">2 150 ₽</span>
+                            <span class="old-price">2 800 ₽</span>
+                        </div>
+                        <button class="add-to-cart" disabled>Нет в наличии</button>
+                    </div>
+                </div>
+            </main>
+        </section>
+    </div>
+    
+      <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>© "АвтоДельта", 2025</h3>
+                <p>Сайт не является публичной офертой</p>
+                <p>согласно положениям статьи 437 ГК РФ</p>
+            </div>
+            <div class="footer-section">
+                <h3>Предметы</h3>
+                <a href="/catalog">Каталог</a>
+                <a href="#">Поставщикам</a>
+                <a href="#">Партнёрам</a>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <div class="footer-contacts">
+                    <img class="header-icons" src="../static/icons/call_footer.svg"/>
+                    <p>+7 (850) 589-48-43</p>
+                </div>
+                <div class="footer-contacts">
+                    <img class="header-icons" src="../static/icons/location_on_footer.svg"/>
+                    <p>г. Кострова, ул. Евгения Ермакова, 3, корп.2</p>
+                </div>
+                <div class="footer-contacts">
+                    <img class="header-icons" src="../static/icons/mark_as_unread_footer.svg"/>
+                    <p>info@auto-delta.com</p>
+                </div>
+                <div class="footer-contacts">
+                    <img class="header-icons" src="../static/icons/alarm_footer.svg"/>
+                    <p>Время работы: Понедельник-Пятница, 09:00 - 19:30</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>   

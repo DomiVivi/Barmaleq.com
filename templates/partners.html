@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автозапчасти</title>
+    <link rel="stylesheet" href="../static/styles/partners.css">
+</head>
+<body>
+    <!-- Общая фиксированная шапка -->
+    <header class="header">
+        <!-- Верхняя строка - контакты -->
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="contacts">
+                    <img class="header-icons" src="../static/icons/call.svg"/>
+                    <span>+7 (850) 589-48-43</span>
+                </div>
+                
+                <div class="user-auth">
+                    {% if user_logged_in %}
+                        <span style="color: white;">Привет, {{ user_name }}!</span>
+                    {% else %}
+                        <a href="/login" style="color: rgb(0, 0, 0); text-decoration: none;"></a>
+                    {% endif %}
+                </div>
+                <div class="contacts" style="float: left;">
+                    <img class="header-icons" src="../static/icons/location_on.svg"/>
+                    <span>info@auto-delta.com</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Средняя строка - лого и иконки -->
+        <div class="header-middle">
+            <div class="header-middle-content">
+                <div class="logo"><img class="build" src="../static/icons/build.svg" alt="">АвтоДельта</div>
+                <div class="header-icons">
+                    <a href="/cart" class="cart-icon">
+                        <img src="../static/icons/shopping_cart.png" alt="Корзина">
+                    </a>
+                    {% if user_logged_in %}
+                        <a href="/profile" class="person-icon">
+                            <img src="../static/icons/person.png" alt="Профиль">
+                        </a>
+                        <a href="/logout" class="logout-btn">Выйти</a>
+                    {% else %}
+                        <a href="/login" class="person-icon">
+                            <img src="../static/icons/person.png" alt="Войти">
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Нижняя строка - навигация -->
+        <nav class="header-bottom">
+            <div class="nav-links">
+                <a href="/" class="active">Главная</a>
+                <a href="/catalog">Каталог</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <!-- Главная -->
+    <main class="hero">  
+        <!-- Основной контент -->
+        <section class="section">
+            <div class="about">
+                <h2 class="section-title">Партнёрам</h2>
+                <p>По вопросам сотрудничества пишите на почту - <a href="#">avto-delta@ro.ru</a></p>
+            </div>
+        </section>  
+    </main>
+
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>© "АвтоДельта", 2025</h3>
+                <p>Сайт не является публичной офертой</p>
+                <p>согласно положениям статьи 437 ГК РФ</p>
+            </div>
+            <div class="footer-section">
+                <h3>Предметы</h3>
+                <a href="/catalog">Каталог</a>
+                <a href="#">Поставщикам</a>
+                <a href="#">Партнёрам</a>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <div class="footer-contacts">
+                    <img class="header-icons" src="../static/icons/call_footer.svg"/>
+                    <p>+7 (850) 589-48-43</p>
+                </div>
+                <div class="footer-contacts">
+                    <img class="header-icons" src="../static/icons/location_on_footer.svg"/>
+                    <p>г. Кострова, ул. Евгения Ермакова, 3, корп.2</p>
+                </div>
+                <div class="footer-contacts">
+                    <img class="header-icons" src="../static/icons/mark_as_unread_footer.svg"/>
+                    <p>info@auto-delta.com</p>
+                </div>
+                <div class="footer-contacts">
+                    <img class="header-icons" src="../static/icons/alarm_footer.svg"/>
+                    <p>Время работы: Понедельник-Пятница, 09:00 - 19:30</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
