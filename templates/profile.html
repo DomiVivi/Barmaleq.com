@@ -20,7 +20,7 @@
                 
                 <div class="user-auth">
                     {% if user_logged_in %}
-                        <span style="color: white;">Привет, {{ user_name }}!</span>
+                        
                     {% else %}
                         <a href="/login" style="color: rgb(0, 0, 0); text-decoration: none;"></a>
                     {% endif %}
@@ -75,8 +75,20 @@
                     <div><img src="/static/icons/person-svg-profile.svg"></div>
                 </div>
                 <div class="user-info">
-                    <h2 id="userFullName">Имя Фамилия</h2>
-                    <div class="user-email" id="userEmail">email@example.com</div>
+                    <h2 id="userFullName">
+                        {% if user_data %}
+                            {{ user_data.name }} {{ user_data.surname }}
+                        {% else %}
+                            Имя Фамилия
+                        {% endif %}
+                    </h2>
+                    <div class="user-email" id="userEmail">
+                        {% if user_data and user_data.email %}
+                            {{ user_data.email }}
+                        {% else %}
+                            email@example.com
+                        {% endif %}
+                    </div>
                 </div>
             </div>
             
@@ -92,33 +104,44 @@
             <h1 class="section-title">Личные данные</h1>
             <p class="data-description">Управляйте своей персональной информацией</p>
             
-            <div id="statusMessage" class="status-message"></div>
+            <!-- Сообщения flash -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             
             <div class="personal-data">
-                <div class="data-grid">
-                    <div class="data-item">
-                        <strong>Имя</strong>
-                        <input type="text" id="firstName" placeholder="Введите имя">
+                <form method="POST" action="/profile">
+                    <div class="data-grid">
+                        <div class="data-item">
+                            <strong>Имя</strong>
+                            <input type="text" name="firstName" value="{{ user_data.name if user_data else '' }}" placeholder="Введите имя">
+                        </div>
+                        <div class="data-item">
+                            <strong>Фамилия</strong>
+                            <input type="text" name="lastName" value="{{ user_data.surname if user_data else '' }}" placeholder="Введите фамилию">
+                        </div>
+                        <div class="data-item">
+                            <strong>Телефон</strong>
+                            <input type="tel" name="phone" value="{{ user_data.telephone if user_data else '' }}" placeholder="+7 (XXX) XXX-XX-XX">
+                        </div>
+                        <div class="data-item">
+                            <strong>Электронная почта</strong>
+                            <input type="email" name="email" value="{{ user_data.email if user_data else '' }}" placeholder="email@example.com">
+                        </div>
+                        <div class="data-item full-width">
+                            <strong>Адрес</strong>
+                            <textarea name="address" placeholder="Введите ваш адрес">{{ user_data.address if user_data else '' }}</textarea>
+                        </div>
                     </div>
-                    <div class="data-item">
-                        <strong>Фамилия</strong>
-                        <input type="text" id="lastName" placeholder="Введите фамилию">
-                    </div>
-                    <div class="data-item">
-                        <strong>Телефон</strong>
-                        <input type="tel" id="phone" placeholder="+7 (XXX) XXX-XX-XX">
-                    </div>
-                    <div class="data-item">
-                        <strong>Электронная почта</strong>
-                        <input type="email" id="email" placeholder="email@example.com">
-                    </div>
-                    <div class="data-item full-width">
-                        <strong>Адрес</strong>
-                        <textarea id="address" placeholder="Введите ваш адрес"></textarea>
-                    </div>
-                </div>
-                
-                <button class="btn-save" onclick="saveUserData()">Сохранить изменения</button>
+                    
+                    <button type="submit" class="btn-save">Сохранить изменения</button>
+                </form>
             </div>
         </main>
 

@@ -14,7 +14,9 @@ class User(db.Model):
     surname = db.Column(db.String(50), nullable=False)
     login = db.Column(db.String(50), nullable=False, unique=True)
     password_hash = db.Column(db.String(60), nullable=False)
-    telephone = db.Column(db.String(15), nullable=False)
+    telephone = db.Column(db.String(20), nullable=False)
+    email = db.Column(db.String(100))
+    address = db.Column(db.Text)
 
     def set_password(self, password):
         self.password_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
@@ -49,6 +51,7 @@ def register():
         login = request.form['login']
         password = request.form['password']
         telephone = request.form['telephone']
+        email = request.form.get('email', '')
         
         existing_user = User.query.filter_by(login=login).first()
         if existing_user:
@@ -59,7 +62,8 @@ def register():
             name=name,
             surname=surname,
             login=login,
-            telephone=telephone
+            telephone=telephone,
+            email=email
         )
         new_user.set_password(password)
         
@@ -99,12 +103,34 @@ def logout():
     flash('Вы вышли из системы', 'info')
     return redirect(url_for('index'))
 
-@app.route('/profile')
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
     if 'user_id' not in session:
         flash('Пожалуйста, войдите в систему', 'error')
         return redirect(url_for('login'))
-    return render_template('profile.html', user_logged_in=True, user_name=session['user_name'])
+    
+    user = User.query.get(session['user_id'])
+    
+    if request.method == 'POST':
+        user.name = request.form.get('firstName', user.name)
+        user.surname = request.form.get('lastName', user.surname)
+        user.telephone = request.form.get('phone', user.telephone)
+        user.email = request.form.get('email', user.email)
+        user.address = request.form.get('address', user.address)
+        
+        try:
+            db.session.commit()
+            session['user_name'] = user.name
+            flash('Данные успешно обновлены!', 'success')
+            return redirect(url_for('profile'))
+        except:
+            db.session.rollback()
+            flash('Ошибка при обновлении данных', 'error')
+    
+    return render_template('profile.html', 
+                         user_logged_in=True, 
+                         user_name=session['user_name'],
+                         user_data=user)
 
 @app.route('/cart')
 def cart():

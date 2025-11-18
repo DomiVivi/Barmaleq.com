@@ -19,8 +19,8 @@
                 
                 <div class="user-auth">
                     {% if user_logged_in %}
-                        <span style="color: white;">Привет, {{ user_name }}!</span>
-                    
+                        
+                    {% else %}
                         <a href="/login" style="color: rgb(0, 0, 0); text-decoration: none;"></a>
                     {% endif %}
                 </div>
