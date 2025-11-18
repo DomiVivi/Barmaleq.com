@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Автозапчасти</title>
+    <title>Партнёрам</title>
     <link rel="stylesheet" href="../static/styles/partners.css">
 </head>
 <body>
@@ -20,13 +20,13 @@
                 <div class="user-auth">
                     {% if user_logged_in %}
                         <span style="color: white;">Привет, {{ user_name }}!</span>
-                    {% else %}
+                    
                         <a href="/login" style="color: rgb(0, 0, 0); text-decoration: none;"></a>
                     {% endif %}
                 </div>
                 <div class="contacts" style="float: left;">
                     <img class="header-icons" src="../static/icons/location_on.svg"/>
-                    <span>info@auto-delta.com</span>
+                    <span>г. Кострома, ул. Евгения Ермакова, 3, корп.2</span>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
                         <a href="/profile" class="person-icon">
                             <img src="../static/icons/person.png" alt="Профиль">
                         </a>
-                        <a href="/logout" class="logout-btn">Выйти</a>
+                       
                     {% else %}
                         <a href="/login" class="person-icon">
                             <img src="../static/icons/person.png" alt="Войти">
@@ -56,7 +56,7 @@
         <!-- Нижняя строка - навигация -->
         <nav class="header-bottom">
             <div class="nav-links">
-                <a href="/" class="active">Главная</a>
+                <a href="/">Главная</a>
                 <a href="/catalog">Каталог</a>
             </div>
         </nav>
@@ -86,8 +86,8 @@
             <div class="footer-section">
                 <h3>Предметы</h3>
                 <a href="/catalog">Каталог</a>
-                <a href="#">Поставщикам</a>
-                <a href="#">Партнёрам</a>
+                <a href="/suppliers">Поставщикам</a>
+                <a href="/partners">Партнёрам</a>
             </div>
             <div class="footer-section">
                 <h3>Контакты</h3>

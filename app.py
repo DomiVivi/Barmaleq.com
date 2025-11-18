@@ -31,6 +31,10 @@ def index():
     user_name = session.get('user_name', '')
     return render_template('index.html', user_logged_in=user_logged_in, user_name=user_name)
 
+@app.route('/index')
+def index_redirect():
+    return redirect(url_for('index'))
+
 @app.route('/catalog')
 def catalog():
     user_logged_in = 'user_id' in session
@@ -100,14 +104,54 @@ def profile():
     if 'user_id' not in session:
         flash('Пожалуйста, войдите в систему', 'error')
         return redirect(url_for('login'))
-    return f"Профиль пользователя {session['user_name']}"
+    return render_template('profile.html', user_logged_in=True, user_name=session['user_name'])
 
 @app.route('/cart')
 def cart():
     if 'user_id' not in session:
         flash('Пожалуйста, войдите в систему', 'error')
         return redirect(url_for('login'))
-    return f"Корзина пользователя {session['user_name']}"
+    return render_template('shopping_cart.html', user_logged_in=True, user_name=session['user_name'])
+
+@app.route('/empty_cart')
+def empty_cart():
+    if 'user_id' not in session:
+        flash('Пожалуйста, войдите в систему', 'error')
+        return redirect(url_for('login'))
+    return render_template('empty_shopping_cart.html', user_logged_in=True, user_name=session['user_name'])
+
+@app.route('/order')
+def order():
+    if 'user_id' not in session:
+        flash('Пожалуйста, войдите в систему', 'error')
+        return redirect(url_for('login'))
+    return render_template('order.html', user_logged_in=True, user_name=session['user_name'])
+
+@app.route('/making_purchase')
+def making_purchase():
+    if 'user_id' not in session:
+        flash('Пожалуйста, войдите в систему', 'error')
+        return redirect(url_for('login'))
+    return render_template('making_a_purchase.html', user_logged_in=True, user_name=session['user_name'])
+
+@app.route('/successful_purchase')
+def successful_purchase():
+    if 'user_id' not in session:
+        flash('Пожалуйста, войдите в систему', 'error')
+        return redirect(url_for('login'))
+    return render_template('successful_purchase.html', user_logged_in=True, user_name=session['user_name'])
+
+@app.route('/partners')
+def partners():
+    user_logged_in = 'user_id' in session
+    user_name = session.get('user_name', '')
+    return render_template('partners.html', user_logged_in=user_logged_in, user_name=user_name)
+
+@app.route('/suppliers')
+def suppliers():
+    user_logged_in = 'user_id' in session
+    user_name = session.get('user_name', '')
+    return render_template('suppliers.html', user_logged_in=user_logged_in, user_name=user_name)
 
 if __name__ == '__main__':
     app.run(debug=True)

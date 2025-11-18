@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="../static/styles/shopping_cart.css">
+</head>
+<body>
+    <!-- Общая фиксированная шапка -->
+    <header class="header">
+        <!-- Верхняя строка - контакты -->
+        <div class="header-top">
+            <div class="header-top-content">
+                <div class="contacts">
+                    <img class="header-icons" src="../static/icons/call.svg"/>
+                    <span>+7 (850) 589-48-43</span>
+                </div>
+                
+                <div class="user-auth">
+                    {% if user_logged_in %}
+                        <span style="color: white;">Привет, {{ user_name }}!</span>
+                    {% else %}
+                        <a href="/login" style="color: rgb(0, 0, 0); text-decoration: none;"></a>
+                    {% endif %}
+                </div>
+                <div class="contacts" style="float: left;">
+                    <img class="header-icons" src="../static/icons/location_on.svg"/>
+                    <span>г. Кострома, ул. Евгения Ермакова, 3, корп.2</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Средняя строка - лого и иконки -->
+        <div class="header-middle">
+            <div class="header-middle-content">
+                <div class="logo"><img class="build" src="../static/icons/build.svg" alt="">АвтоДельта</div>
+                <div class="header-icons">
+                    <a href="/cart" class="cart-icon">
+                        <img src="../static/icons/shopping_cart.png" alt="Корзина">
+                    </a>
+                    {% if user_logged_in %}
+                        <a href="/profile" class="person-icon">
+                            <img src="../static/icons/person.png" alt="Профиль">
+                        </a>
+                        
+                    {% else %}
+                        <a href="/login" class="person-icon">
+                            <img src="../static/icons/person.png" alt="Войти">
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Нижняя строка - навигация -->
+        <nav class="header-bottom">
+            <div class="nav-links">
+                <a href="/" >Главная</a>
+                <a href="/catalog">Каталог</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="container">
+        <h2 class="cart-title">Корзина покупок</h2>
+
+        <div class="cart-container">
+            <div class="cart-items">
+                <!-- Товар 1 -->
+                <div class="cart-item">
+                    <img src="https://avatars.mds.yandex.net/get-mpic/12636049/2a0000018d8fd2a907d390fe2c7f157fecb2/orig" alt="Тормозные колодки" class="item-image">
+                    <div class="item-details">
+                        <div class="item-name">Тормозные колодки передние</div>
+                       <div class="item-price">
+                            <span class="current-price"> 1 346 ₽</span>
+                            <span class="old-price">2 150 ₽</span>
+                        </div>
+                    </div>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="quantity-btn">+</button>
+                    </div>
+                    <button class="remove-btn">Удалить</button>
+                </div>
+
+                <!-- Товар 2 -->
+                <div class="cart-item">
+                    <img src="https://maks-plus.ru/uploads/spareparts/2/24981/thumb_300_300.jpg" alt="Масляный фильтр" class="item-image">
+                    <div class="item-details">
+                        <div class="item-name">Масляный фильтр</div>
+                        <div class="item-price">
+                            <span class="current-price">850 ₽</span>
+                            <span class="old-price">986 ₽</span>
+                        </div>
+                    </div>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn">-</button>
+                        <input type="number" class="quantity-input" value="2" min="1">
+                        <button class="quantity-btn">+</button>
+                    </div>
+                    <button class="remove-btn">Удалить</button>
+                </div>
+
+                <!-- Товар 3 -->
+                <div class="cart-item">
+                    <img src="https://avatars.mds.yandex.net/get-mpic/11179429/2a0000018c871d41c4f5d94008fd2e89ea9f/orig" alt="Воздушный фильтр" class="item-image">
+                    <div class="item-details">
+                        <div class="item-name">Воздушный фильтр салона</div>
+                        <div class="item-price">
+                            <span class="current-price">1 200 ₽</span>
+                            <span class="old-price">1 421 ₽</span>
+                        </div>
+                    </div>
+                    <div class="quantity-controls">
+                        <button class="quantity-btn">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="quantity-btn">+</button>
+                    </div>
+                    <button class="remove-btn">Удалить</button>
+                </div>
+            </div>
+        
+
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Товары (4 шт.)</span>
+                    <span>5 543 ₽</span>
+                </div>
+                <div class="summary-row">
+                    <span>Доставка</span>
+                    <span>500 ₽</span>
+                </div>
+                <div class="summary-row">
+                    <span>Скидка</span>
+                    <span style="color: #27ae60;">-797 ₽</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Итого к оплате:</span>
+                    <span>4 746 ₽</span>
+                </div>
+
+                <button class="checkout-btn" onclick="window.location.href='/making_purchase'">Перейти к оформлению</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>© "АвтоДельта", 2025</h3>
+                <p>Сайт не является публичной офертой</p>
+                <p>согласно положениям статьи 437 ГК РФ</p>
+            </div>
+            <div class="footer-section">
+                <h3>Предметы</h3>
+                <a href="/catalog">Каталог</a>
+                <a href="/suppliers">Поставщикам</a> 
+                <a href="/partners">Партнёрам</a>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <div class="footer-contacts">
+                    <img class="header-icons" src="../static/icons/call_footer.svg"/>
+                    <p>+7 (850) 589-48-43</p>
+                </div>
+                <div class="footer-contacts">
+                    <img class="header-icons" src="../static/icons/location_on_footer.svg"/>
+                    <p>г. Кострова, ул. Евгения Ермакова, 3, корп.2</p>
+                </div>
+                <div class="footer-contacts">
+                    <img class="header-icons" src="../static/icons/mark_as_unread_footer.svg"/>
+                    <p>info@auto-delta.com</p>
+                </div>
+                <div class="footer-contacts">
+                    <img class="header-icons" src="../static/icons/alarm_footer.svg"/>
+                    <p>Время работы: Понедельник-Пятница, 09:00 - 19:30</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+        
+</body>
+</html>

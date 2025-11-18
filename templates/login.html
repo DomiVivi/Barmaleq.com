@@ -8,31 +8,38 @@
 </head>
 
 <body>
-    <div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert {{ 'success' if category == 'success' else 'error' }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+    <div>
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert {{ 'success' if category == 'success' else 'error' }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
 
-        <h1 class="logo"><img class="build" src="../static/icons/build.svg" alt="">АвтоДельта</h1>
+            <h1 class="logo"><img class="build" src="../static/icons/build.svg" alt="">АвтоДельта</h1>
 
-        <h3>Авторизация</h3>
-        
-        <form method="POST">
-            <input type="text" name="login" placeholder="Ваш логин" required>
-            <input type="password" name="password" placeholder="Ваш пароль" required>
+            <h3>Авторизация</h3>
             
-            <button type="submit">Войти</button>
-        </form>
-        
-        <div class="register-link">
-            <p>Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+            <form method="POST">
+                <input type="text" name="login" placeholder="Ваш логин" required>
+                <input type="password" name="password" placeholder="Ваш пароль" required>
+                
+                <button type="submit">Войти</button>
+            </form>
+            
+            <div class="register-link">
+                <p>Нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
+            </div>
         </div>
+
+        <div>
+            <h6>Если у вас есть вопросы, мы всегда рады помочь.<br>Свяжитесь с нами +7 (850) 589-48-43</h6>
+        </div>
+
     </div>
 </body>
 </html>

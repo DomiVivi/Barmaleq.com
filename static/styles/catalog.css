@@ -181,12 +181,12 @@ body {
 }
 
 .nav-links a:hover {
-    background-color: #9f1d1d;
+    background-color: #d72f2f;
     color: rgb(255, 255, 255);
 }
 
 .nav-links a.active {
-    background-color: #961616;
+    background-color: #d72f2f;
     color: rgb(255, 255, 255);
 }
 
@@ -413,7 +413,7 @@ body {
 
 .footer-section h3 {
     margin-bottom: 15px;
-    color: #D72F2F;
+    color: #d72f2f;
     font-size: 18px;
 }
 

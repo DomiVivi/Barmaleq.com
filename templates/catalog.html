@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Автозапчасти</title>
+    <title>Каталог</title>
     <link rel="stylesheet" href="../static/styles/catalog.css">
 </head>
 <body>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="contacts" style="float: left;">
                     <img class="header-icons" src="../static/icons/location_on.svg"/>
-                    <span>info@auto-delta.com</span>
+                    <span>г. Кострома, ул. Евгения Ермакова, 3, корп.2</span>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
                         <a href="/profile" class="person-icon">
                             <img src="../static/icons/person.png" alt="Профиль">
                         </a>
-                        <a href="/logout" class="logout-btn">Выйти</a>
+                        
                     {% else %}
                         <a href="/login" class="person-icon">
                             <img src="../static/icons/person.png" alt="Войти">
@@ -56,8 +56,8 @@
         <!-- Нижняя строка - навигация -->
         <nav class="header-bottom">
             <div class="nav-links">
-                <a href="/index" >Главная</a>
-                <a href="/" class="active">Каталог</a>
+                <a href="/" >Главная</a>
+                <a href="/catalog" class="active">Каталог</a>
             </div>
         </nav>
     </header>
@@ -105,7 +105,7 @@
                     <!-- Товар 1 - В наличии -->
                     <div class="product-card">
                         <div class="product-image">
-                            <img src="https://avatars.mds.yandex.net/get-mpic/11179429/2a0000018c871d41c4f5d94008fd2e89ea9f/orig" alt="Воздушный фильтр">
+                            <img src="https://avatars.mds.yandex.net/get-mpic/5234464/2a0000019278992363d01a948c4492e9a08c/orig" alt="Воздушный фильтр">
                         </div>
                         <div class="stock-status in-stock">В наличии</div>
                         <div class="product-name">Воздушный фильтр двигателя</div>
@@ -229,8 +229,8 @@
             <div class="footer-section">
                 <h3>Предметы</h3>
                 <a href="/catalog">Каталог</a>
-                <a href="#">Поставщикам</a>
-                <a href="#">Партнёрам</a>
+                <a href="/suppliers">Поставщикам</a>  
+                <a href="/partners">Партнёрам</a>     
             </div>
             <div class="footer-section">
                 <h3>Контакты</h3>

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная</title>
-    <link rel="stylesheet" href="../static/styles/index.css">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="../static/styles/empty_shopping_cart.css">
 </head>
 <body>
     <!-- Общая фиксированная шапка -->
@@ -20,7 +20,7 @@
                 <div class="user-auth">
                     {% if user_logged_in %}
                         <span style="color: white;">Привет, {{ user_name }}!</span>
-                    {% else %}
+                  
                         <a href="/login" style="color: rgb(0, 0, 0); text-decoration: none;"></a>
                     {% endif %}
                 </div>
@@ -43,7 +43,7 @@
                         <a href="/profile" class="person-icon">
                             <img src="../static/icons/person.png" alt="Профиль">
                         </a>
-                       
+                        <a href="/logout" class="logout-btn">Выйти</a>
                     {% else %}
                         <a href="/login" class="person-icon">
                             <img src="../static/icons/person.png" alt="Войти">
@@ -56,45 +56,25 @@
         <!-- Нижняя строка - навигация -->
         <nav class="header-bottom">
             <div class="nav-links">
-                <a href="/" class="active">Главная</a>
+                <a href="/" >Главная</a>
                 <a href="/catalog">Каталог</a>
             </div>
         </nav>
     </header>
 
-    <!-- Главный баннер с картинкой как фон -->
-    <section class="hero">
-        <!-- Чистая картинка без текста и затемнения -->
-    </section>
-
-    <!-- Основной контент -->
-    <main class="content">
-        <section class="section">
-            <h2 class="section-title">Популярные товары</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <h3>Моторные масла</h3>
-                    <p>Высококачественные масла для любого двигателя</p>
-                </div>
-                <div class="product-card">
-                    <h3>Тормозные колодки</h3>
-                    <p>Надежные тормозные системы</p>
-                </div>
-                <div class="product-card">
-                    <h3>Фильтры</h3>
-                    <p>Воздушные, масляные, топливные фильтры</p>
-                </div>
+    <!-- Основной контент - пустая корзина -->
+    <main class="container">
+        <h2 class="cart-title">Корзина покупок</h2> 
+        
+        <div class="cart-container">
+            <div class="empty-cart">
+                <div class="empty-cart-icon"><img src="../static/icons/shopping_cart.svg" alt="Корзина"></div>
+                <h3>Ваша корзина пуста</h3>
+                <p>Добавьте товары из каталога автозапчастей</p>
+                <button class="continue-shopping" onclick="window.location.href='/catalog'">Продолжить покупки</button>
             </div>
-        </section>
-
-        <section class="section">
-            <div class="about">
-                <h2 class="section-title">О компании</h2>
-                <p>Мы являемся ведущим поставщиком автозапчастей с многолетним опытом работы на рынке. Наша компания предлагает только оригинальные и сертифицированные запчасти для всех марок автомобилей.</p>
-                <p>Широкий ассортимент, гарантия качества и доступные цены - вот наши основные преимущества. Мы работаем напрямую с производителями, что позволяет нам предлагать лучшие цены на рынке.</p>
-                <p>Наши специалисты всегда готовы помочь вам с выбором запчастей и ответить на все вопросы. Доверьте свой автомобиль профессионалам!</p>
-            </div>
-        </section>
+        </div>
+        
     </main>
 
     <!-- Футер -->
@@ -109,7 +89,7 @@
                 <h3>Предметы</h3>
                 <a href="/catalog">Каталог</a>
                 <a href="/suppliers">Поставщикам</a>  
-                <a href="/partners">Партнёрам</a>     
+                <a href="/partners">Партнёрам</a>   
             </div>
             <div class="footer-section">
                 <h3>Контакты</h3>
@@ -132,5 +112,6 @@
             </div>
         </div>
     </footer>
+
 </body>
 </html>
